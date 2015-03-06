@@ -17,7 +17,7 @@
 
 # Dockerfile for hawkular-kettle
 
-FROM hawkularorg/docker-maven
+FROM hawkular/docker-maven
 
 MAINTAINER Viet Nguyen <vnguyen@redhat.com>
 
