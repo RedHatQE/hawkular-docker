@@ -39,7 +39,7 @@ RUN cd /opt &&\
   -Dmdep.stripClassifier=true
 
 RUN unzip -qq -d /opt /opt/hawkular-kettle.zip;\
-    rm /opt/hawkular-kettle.zip;\
+    rm -rf /opt/hawkular-kettle.zip /root/.m2;\
     /opt/wildfly-8.2.0.Final/bin/add-user.sh hawkularadmin hawkularadmin --silent
 
 EXPOSE 8080 9990
