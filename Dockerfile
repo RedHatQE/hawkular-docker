@@ -36,9 +36,8 @@ RUN cd /opt &&\
   -Dartifact="${ARTIFACT}"\
   -DoutputDirectory=.\
   -Dmdep.stripVersion=true\
-  -Dmdep.stripClassifier=true
-
-RUN unzip -qq -d /opt /opt/hawkular-kettle.zip;\
+  -Dmdep.stripClassifier=true &&\
+ unzip -qq -d /opt /opt/hawkular-kettle.zip;\
     rm -rf /opt/hawkular-kettle.zip /root/.m2;\
     /opt/wildfly-8.2.0.Final/bin/add-user.sh hawkularadmin hawkularadmin --silent
 
