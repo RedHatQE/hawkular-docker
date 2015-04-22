@@ -43,4 +43,13 @@ RUN cd /opt &&\
 
 EXPOSE 8080 9990
 
-CMD ["/opt/wildfly-8.2.0.Final/bin/standalone.sh","-b","0.0.0.0","-bmanagement","0.0.0.0"]
+RUN printf "\
+if  df | grep var/data;then\n\
+  /opt/wildfly-8.2.0.Final/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.server.data.dir=/var/data\n\
+else\n\
+  /opt/wildfly-8.2.0.Final/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0\n\
+fi\n\
+" >> /root/start.sh
+RUN chmod 755 /root/start.sh
+
+CMD ["/bin/bash", "/root/start.sh"]
