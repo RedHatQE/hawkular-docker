@@ -22,8 +22,8 @@ FROM hawkular/docker-maven
 MAINTAINER Viet Nguyen <vnguyen@redhat.com>
 
 ENV REPO_URL=http://snapshots.jboss.org/maven2
-ENV KETTLE_VERSION=1.0.0-SNAPSHOT
-ENV ARTIFACT=org.hawkular:hawkular-kettle:${KETTLE_VERSION}:zip:distribution
+ENV HAWKULAR_VERSION=1.0.0-SNAPSHOT
+ENV ARTIFACT=org.hawkular:hawkular-dist:${HAWKULAR_VERSION}:zip
 
 USER root
 
@@ -37,8 +37,8 @@ RUN cd /opt &&\
   -DoutputDirectory=.\
   -Dmdep.stripVersion=true\
   -Dmdep.stripClassifier=true &&\
- unzip -qq -d /opt /opt/hawkular-kettle.zip;\
-    rm -rf /opt/hawkular-kettle.zip /root/.m2;\
+ unzip -qq -d /opt /opt/hawkular-dist.zip;\
+    rm -rf /opt/hawkular-dist.zip /root/.m2;\
     /opt/wildfly-8.2.0.Final/bin/add-user.sh hawkularadmin hawkularadmin --silent
 
 EXPOSE 8080 9990
