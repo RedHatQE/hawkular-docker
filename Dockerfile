@@ -22,7 +22,7 @@ FROM hawkular/docker-maven
 MAINTAINER Viet Nguyen <vnguyen@redhat.com>
 
 ENV REPO_URL=http://snapshots.jboss.org/maven2
-ENV HAWKULAR_VERSION=1.0.0-SNAPSHOT
+ENV HAWKULAR_VERSION=1.0.0.Alpha2-SNAPSHOT
 ENV ARTIFACT=org.hawkular:hawkular-dist:${HAWKULAR_VERSION}:zip
 
 USER root
