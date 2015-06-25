@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Copyright 2015 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
@@ -15,19 +16,10 @@
 # limitations under the License.
 #
 
-# Dockerfile for hawkular-kettle
+unzip -qq -d /opt /opt/hawkular-dist.zip &&\
+    HAWKULAR_HOME=$(unzip -l /opt/hawkular-dist.zip | head -n4 | tail -n1 |grep hawkular | awk '{print $4}') &&\
+    ln -s /opt/${HAWKULAR_HOME} /opt/hawkular-live &&\
+    rm -f /opt/hawkular-dist.zip &&\
+    mkdir -p /var/hawkular/data
 
-FROM jboss/base-jdk:8
-
-USER root
-WORKDIR /opt
-
-ADD output/hawkular-dist.zip /opt/
-ADD install.sh /usr/bin/hawkular-install.sh
-ADD start.sh /usr/bin/hawkular-start.sh
-
-RUN /usr/bin/hawkular-install.sh
-
-EXPOSE 8080
-
-CMD ["/bin/bash", "/usr/bin/hawkular-start.sh"]
+exit $?

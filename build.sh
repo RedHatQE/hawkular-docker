@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Copyright 2015 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
@@ -14,20 +15,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-# Dockerfile for hawkular-kettle
-
-FROM jboss/base-jdk:8
-
-USER root
-WORKDIR /opt
-
-ADD output/hawkular-dist.zip /opt/
-ADD install.sh /usr/bin/hawkular-install.sh
-ADD start.sh /usr/bin/hawkular-start.sh
-
-RUN /usr/bin/hawkular-install.sh
-
-EXPOSE 8080
-
-CMD ["/bin/bash", "/usr/bin/hawkular-start.sh"]
+. build-env
+echo "## build-env ##"
+cat build-env
+echo "##"
+rm -rf output/* &&\
+mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
+  -DremoteRepositories=${REPO_URL}\
+  -Dartifact=${ARTIFACT}\
+  -Dtransitive=false &&\
+mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:copy\
+  -Dartifact="${ARTIFACT}"\
+  -DoutputDirectory=output\
+  -Dmdep.stripVersion=true\
+  -Dmdep.stripClassifier=true &&\
+  echo "## Docker build" &&\
+  docker build --force-rm=true --no-cache=true --rm=true --tag=${DOCKER_TAG} .
+ 
+exit $?

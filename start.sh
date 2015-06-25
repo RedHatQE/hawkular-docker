@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Copyright 2015 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
@@ -15,19 +16,5 @@
 # limitations under the License.
 #
 
-# Dockerfile for hawkular-kettle
-
-FROM jboss/base-jdk:8
-
-USER root
-WORKDIR /opt
-
-ADD output/hawkular-dist.zip /opt/
-ADD install.sh /usr/bin/hawkular-install.sh
-ADD start.sh /usr/bin/hawkular-start.sh
-
-RUN /usr/bin/hawkular-install.sh
-
-EXPOSE 8080
-
-CMD ["/bin/bash", "/usr/bin/hawkular-start.sh"]
+/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.server.data.dir=/var/hawkular/data
+exit $?
