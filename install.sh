@@ -16,10 +16,10 @@
 # limitations under the License.
 #
 
+. /etc/build-env
 unzip -qq -d /opt /opt/hawkular-dist.zip &&\
-    HAWKULAR_HOME=$(unzip -l /opt/hawkular-dist.zip | head -n4 | tail -n1 |grep hawkular | awk '{print $4}') &&\
-    ln -s /opt/${HAWKULAR_HOME} /opt/hawkular-live &&\
-    rm -f /opt/hawkular-dist.zip &&\
-    mkdir -p /var/hawkular/data
+ln -s /opt/hawkular-${HAWKULAR_VERSION} /opt/hawkular-live &&\
+rm -f /opt/hawkular-dist.zip &&\
+mkdir -p /var/hawkular/data
 
 exit $?

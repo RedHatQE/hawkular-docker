@@ -22,6 +22,7 @@ FROM jboss/base-jdk:8
 USER root
 WORKDIR /opt
 
+ADD build-env /etc/build-env
 ADD output/hawkular-dist.zip /opt/
 ADD install.sh /usr/bin/hawkular-install.sh
 ADD start.sh /usr/bin/hawkular-start.sh
