@@ -15,6 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+KEY_CLOAK_OPTS=
+if [ "${TEST_MODE}" == "true" ]; then
+    echo " ## Test mode detected ##"
+    KEY_CLOAK_OPTS=-Dkeycloak.import=\${jboss.home.dir}/standalone/configuration/hawkular-realm-for-dev.json
+fi
 
-/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.server.data.dir=/var/hawkular/data
+/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.server.data.dir=/var/hawkular/data \
+   ${KEY_CLOAK_OPTS}
 exit $?
