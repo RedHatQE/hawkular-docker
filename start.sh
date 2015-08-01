@@ -21,6 +21,15 @@ if [ "${TEST_MODE}" == "true" ]; then
     cp -b $CONFIG_DIR/hawkular-realm-for-dev.json $CONFIG_DIR/hawkular-realm.json 
 fi
 
-/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 -Djboss.server.data.dir=/var/hawkular/data 
+STORAGE_OPTS=
+
+if [ ! -z ${STORAGE_NODES} ]; then
+   echo " ## Using external storage nodes ##"
+   STORAGE_OPTS="-Dhawkular-metrics.cassandra-nodes=\"${STORAGE_NODES}\" -Dhawkular-metrics.backend=remote"
+fi
+
+/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
+  -Djboss.server.data.dir=/var/hawkular/data \
+  ${STORAGE_OPTS}
 
 exit $?
