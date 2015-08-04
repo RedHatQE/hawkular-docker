@@ -29,7 +29,7 @@ else
 fi
 
 /opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
-  -Djboss.server.data.dir=/var/hawkular/data \
+  -Djboss.server.data.dir=/data
   ${STORAGE_OPTS}
 
 exit $?
