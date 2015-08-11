@@ -28,6 +28,7 @@ ADD build-env /etc/build-env
 ADD output/hawkular-dist.zip /opt/
 ADD install.sh /usr/bin/hawkular-install.sh
 ADD start.sh /usr/bin/hawkular-start.sh
+ADD agent.xsl /opt/
 
 RUN /usr/bin/hawkular-install.sh
 

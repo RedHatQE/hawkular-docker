@@ -19,6 +19,12 @@ if [ "${TEST_MODE}" == "true" ]; then
     echo " ## Test mode detected ##"
     CONFIG_DIR=/opt/hawkular-live/standalone/configuration
     cp -b $CONFIG_DIR/hawkular-realm-for-dev.json $CONFIG_DIR/hawkular-realm.json 
+    
+    # Enable monitoring agent
+    xsltproc --output $CONFIG_DIR/standalone-tmp.xml \
+             --stringparam username jdoe --stringparam password password \
+             /opt/agent.xsl $CONFIG_DIR/standalone.xml  
+    cp -b $CONFIG_DIR/standalone-tmp.xml $CONFIG_DIR/standalone.xml
 fi
 
 if [ !  -z "${CASSANDRA_NODES}" ]; then
