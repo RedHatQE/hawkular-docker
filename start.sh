@@ -33,6 +33,9 @@ if [ !  -z "${CASSANDRA_NODES}" ]; then
 fi
 
 /opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
-  -Djboss.server.data.dir=/data 
+  -Djboss.server.data.dir=/data \
+  -Dhawkular-alerts.cassandra-retry-attempts=10 \
+  -Dhawkular-alerts.cassandra-retry-timeout=3000 \
+  -Djboss.as.management.blocking.timeout=480
 
 exit $?
