@@ -30,6 +30,12 @@ fi
 if [ !  -z "${CASSANDRA_NODES}" ]; then
    echo " ## Using external storage nodes ##"
    export HAWKULAR_BACKEND=cassandra
+elif [ ! -z "${CASSANDRA_SERVICE}" ]; then
+   echo " ## Using Kubernetes-style named service"
+   export HAWKULAR_BACKEND=cassandra
+   eval "s=${CASSANDRA_SERVICE}_SERVICE_HOST"
+   export CASSANDRA_NODES=${!s}
+   echo ${CASSANDRA_NODES}
 fi
 
 /opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
