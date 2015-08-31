@@ -1,4 +1,4 @@
 export REPO_URL=http://snapshots.jboss.org/maven2
-export HAWKULAR_VERSION=1.0.0.Alpha4-SNAPSHOT
+export HAWKULAR_VERSION=1.0.0.Alpha5-SNAPSHOT
 export ARTIFACT=org.hawkular:hawkular-dist:${HAWKULAR_VERSION}:zip
 export DOCKER_TAG=hawkular/hawkular:latest
