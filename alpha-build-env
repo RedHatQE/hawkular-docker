@@ -3,6 +3,7 @@ if [ -z ${HAWKULAR_ALPHA_VERSION} ]; then
    echo "Missing Version Value."
    exit 1
 fi
+echo "Setting Version to Alpha${HAWKULAR_ALPHA_VERSION}"
 export REPO_URL=http://snapshots.jboss.org/maven2
 export HAWKULAR_VERSION=1.0.0.Alpha${HAWKULAR_ALPHA_VERSION}-SNAPSHOT
 export ARTIFACT=org.hawkular:hawkular-dist:${HAWKULAR_VERSION}:zip
