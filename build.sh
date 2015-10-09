@@ -15,10 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-. build-env
-echo "## build-env ##"
-cat build-env
-echo "##"
+if [ -z ${ARTIFACT} ]; then
+   echo "Need to source environment."
+   exit 1
+fi
+
 rm -rf output/* &&\
 mvn org.apache.maven.plugins:maven-dependency-plugin:2.10:get\
   -DremoteRepositories=${REPO_URL}\
