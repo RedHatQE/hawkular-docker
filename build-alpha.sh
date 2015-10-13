@@ -15,7 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#. alpha-build-env ${HAWKULAR_ALPHA_VERSION}
+
+if [ -z $1 ]; then
+   echo "$0: Missing Version Value."
+   exit 1
+fi
+
+source alpha-build-env $1
+
 echo "## build-env ##"
 cat alpha-build-env
 echo "##"

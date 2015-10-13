@@ -15,7 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-. build-env
+source build-env
+
 echo "## build-env ##"
 cat build-env
 
