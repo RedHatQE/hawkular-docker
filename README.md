@@ -4,6 +4,8 @@ Hawkular is an open source system monitoring suite.  You can learn more about th
 ## Usage 
 ```docker run -d -p 8080:8080  hawkular/hawkular```
 
+```docker run -d -p 8080:8080  hawkular/hawkular:alpha<versionNumber>```
+
 Optional environment variables
 
 * ```TEST_MODE=true``` enable test account (id=jdoe, password=password)
