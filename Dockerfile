@@ -24,7 +24,7 @@ WORKDIR /opt
 
 VOLUME /data
 
-ADD build-env /etc/build-env
+ADD alpha-build-env /etc/alpha-build-env
 ADD output/hawkular-dist.zip /opt/
 ADD install.sh /usr/bin/hawkular-install.sh
 ADD start.sh /usr/bin/hawkular-start.sh
