@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-. /etc/alpha-build-env
+. /etc/alpha-build-env ${HAWKULAR_ALPHA_VERSION}
 unzip -qq -d /opt /opt/hawkular-dist.zip &&\
 ln -s /opt/hawkular-${HAWKULAR_VERSION} /opt/hawkular-live &&\
 rm -f /opt/hawkular-dist.zip &&\
