@@ -23,7 +23,7 @@ fi
 
 source alpha-build-env $1
 
-echo "## build-env ##"
+echo "## alpha-build-env ##"
 cat alpha-build-env
 echo "##"
 

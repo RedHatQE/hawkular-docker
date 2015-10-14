@@ -24,6 +24,9 @@ WORKDIR /opt
 
 VOLUME /data
 
+ADD alpha-version.txt /tmp/alpha-version.txt
+RUN export HAWKULAR_ALPHA_VERSION=`cat /tmp/alpha-version.txt`
+
 ADD alpha-build-env /etc/alpha-build-env
 ADD output/hawkular-dist.zip /opt/
 ADD install.sh /usr/bin/hawkular-install.sh
