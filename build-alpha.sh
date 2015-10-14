@@ -1,3 +1,4 @@
+#!/bin/bash
 #
 # Copyright 2015 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
@@ -15,26 +16,17 @@
 # limitations under the License.
 #
 
-# Dockerfile for hawkular-kettle
+if [ -z $1 ]; then
+   echo "$0: Missing Version Value."
+   exit 1
+fi
 
-FROM jboss/base-jdk:8
+source alpha-build-env $1
 
-USER root
-WORKDIR /opt
+echo "## alpha-build-env ##"
+cat alpha-build-env
+echo "##"
 
-VOLUME /data
+. build.sh 
 
-ADD alpha-version.txt /tmp/alpha-version.txt
-RUN export HAWKULAR_ALPHA_VERSION=`cat /tmp/alpha-version.txt`
-
-ADD alpha-build-env /etc/alpha-build-env
-ADD output/hawkular-dist.zip /opt/
-ADD install.sh /usr/bin/hawkular-install.sh
-ADD start.sh /usr/bin/hawkular-start.sh
-ADD agent.xsl /opt/
-
-RUN /usr/bin/hawkular-install.sh
-
-EXPOSE 8080
-
-CMD ["/bin/bash", "/usr/bin/hawkular-start.sh"]
+exit $?
