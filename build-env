@@ -2,6 +2,6 @@ RELEASE_URL=http://origin-repository.jboss.org/maven2
 SNAPSHOT_URL=http://snapshots.jboss.org/maven2
 
 export REPO_URL=${SNAPSHOT_URL}
-export HAWKULAR_VERSION=1.0.0.Alpha6-SNAPSHOT
+export HAWKULAR_VERSION=1.0.0-SNAPSHOT
 export ARTIFACT=org.hawkular:hawkular-dist:${HAWKULAR_VERSION}:zip
 export DOCKER_TAG=hawkular/hawkular:latest

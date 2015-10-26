@@ -18,7 +18,7 @@
 
 . /etc/build-env
 unzip -qq -d /opt /opt/hawkular-dist.zip &&\
-ln -s /opt/hawkular-${HAWKULAR_VERSION} /opt/hawkular-live &&\
+ln -s /opt/wildfly-8.2.* /opt/hawkular-live &&\
 rm -f /opt/hawkular-dist.zip &&\
 mkdir -p /var/hawkular/data
 
