@@ -38,6 +38,13 @@ elif [ ! -z "${CASSANDRA_SERVICE}" ]; then
    echo ${CASSANDRA_NODES}
 fi
 
+if [ -n "${HAWKULAR_URL}" ]; then
+    echo " ## Setting Hawkular URL to ${HAWKULAR_URL} ##"
+    sed s/localhost:8080/${HAWKULAR_URL}/g -i \
+       /opt/hawkular-live/modules/org/hawkular/nest/main/deployments/hawkular-console.war/keycloak.json \
+       /opt/hawkular-live/standalone/configuration/standalone.xml
+fi
+
 /opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
   -Djboss.server.data.dir=/data \
   -Dhawkular-alerts.cassandra-retry-attempts=10 \
