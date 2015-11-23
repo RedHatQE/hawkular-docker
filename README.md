@@ -19,7 +19,7 @@ Optional environment variables
 
 * ```TEST_MODE=true``` enable test account (id=jdoe, password=password)
 * ```CASSANDRA_NODES=<cassandra storage host/ip>``` use external storage node
-* ```HAWKULAR_URL=http<hostName>``` if running on other than localhost
+* ```HAWKULAR_URL=http://<hostName>``` if running on other than localhost
 
 Debug and troubleshooting - overriding the container default startup script with ```/bin/bash``` to get inside the container
 
