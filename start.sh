@@ -39,7 +39,7 @@ elif [ ! -z "${CASSANDRA_SERVICE}" ]; then
 fi
 
 if [ -z "${HAWKULAR_URL}" ]; then
-    HAWKULAR_URL="localhost:8080"
+    export HAWKULAR_URL="localhost:8080"
 fi
 
 echo " ## Setting Hawkular URL to ${HAWKULAR_URL} ##"
