@@ -17,13 +17,13 @@
 #
 if [ "${TEST_MODE}" == "true" ]; then
     echo " ## Test mode detected ##"
-    CONFIG_DIR=/opt/hawkular-live/standalone/configuration
+    CONFIG_DIR=${HAWKULAR_HOME}/standalone/configuration
     cp -b $CONFIG_DIR/hawkular-realm-for-dev.json $CONFIG_DIR/hawkular-realm.json 
     
     # Enable monitoring agent
     xsltproc --output $CONFIG_DIR/standalone-tmp.xml \
              --stringparam username jdoe --stringparam password password \
-             /opt/agent.xsl $CONFIG_DIR/standalone.xml  
+             ${JBOSS_BASE}/agent.xsl $CONFIG_DIR/standalone.xml  
     cp -b $CONFIG_DIR/standalone-tmp.xml $CONFIG_DIR/standalone.xml
 fi
 
@@ -44,7 +44,7 @@ fi
 
 echo " ## Setting Hawkular URL to ${HAWKULAR_URL} ##"
 
-/opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
+${HAWKULAR_HOME}/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
   -Dkeycloak.server.url=http://${HAWKULAR_URL}/auth \
   -Djboss.server.data.dir=/data \
   -Dhawkular-alerts.cassandra-retry-attempts=10 \
