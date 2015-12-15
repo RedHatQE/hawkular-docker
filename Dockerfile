@@ -19,19 +19,25 @@
 
 FROM jboss/base-jdk:8
 
+ENV HAWKULAR_HOME=/opt/jboss/hawkular-live
+ENV JBOSS_BASE=/opt/jboss
+
+WORKDIR ${JBOSS_BASE}
+
+ADD build-env ./
+ADD output/hawkular-dist.zip ./
+ADD install.sh ${JBOSS_BASE}/hawkular-install.sh
+ADD start.sh ${JBOSS_BASE}/hawkular-start.sh
+ADD agent.xsl ./
+
+RUN ${JBOSS_BASE}/hawkular-install.sh 
+
 USER root
-WORKDIR /opt
-
+RUN mkdir /data &&\
+    chown -R jboss:jboss /data
+USER jboss
 VOLUME /data
-
-ADD build-env /etc/build-env
-ADD output/hawkular-dist.zip /opt/
-ADD install.sh /usr/bin/hawkular-install.sh
-ADD start.sh /usr/bin/hawkular-start.sh
-ADD agent.xsl /opt/
-
-RUN /usr/bin/hawkular-install.sh
 
 EXPOSE 8080
 
-CMD ["/bin/bash", "/usr/bin/hawkular-start.sh"]
+CMD ["/bin/bash", "-c", "${JBOSS_BASE}/hawkular-start.sh"]

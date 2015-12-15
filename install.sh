@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 #
 # Copyright 2015 Red Hat, Inc. and/or its affiliates
 # and other contributors as indicated by the @author tags.
@@ -15,11 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-. /etc/build-env
-unzip -qq -d /opt /opt/hawkular-dist.zip &&\
-ln -s /opt/hawkular-${HAWKULAR_VERSION} /opt/hawkular-live &&\
-rm -f /opt/hawkular-dist.zip &&\
-mkdir -p /var/hawkular/data
+: ${JBOSS_BASE:=/opt/jboss}
+. ${JBOSS_BASE}/build-env
+unzip -qq -d ${JBOSS_BASE} ${JBOSS_BASE}/hawkular-dist.zip &&\
+ln -s ${JBOSS_BASE}/hawkular-${HAWKULAR_VERSION} ${JBOSS_BASE}/hawkular-live &&\
+rm -f ${JBOSS_BASE}/hawkular-dist.zip
 
 exit $?
