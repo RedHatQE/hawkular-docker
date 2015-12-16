@@ -19,7 +19,7 @@
 . ${JBOSS_BASE}/build-env
 unzip -qq -d ${JBOSS_BASE} ${JBOSS_BASE}/hawkular-dist.zip &&\
 ln -s ${JBOSS_BASE}/hawkular-${HAWKULAR_VERSION} ${JBOSS_BASE}/hawkular-live &&\
-chmod ug+x ${JBOSS_BASE}/hawkular-live/bin/*.sh &&\
+chmod +x ${JBOSS_BASE}/hawkular-live/bin/*.sh &&\
 rm -f ${JBOSS_BASE}/hawkular-dist.zip
 
 exit $?
