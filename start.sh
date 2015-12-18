@@ -42,6 +42,8 @@ if [ -z "${HAWKULAR_URL}" ]; then
     export HAWKULAR_URL="localhost:8080"
 fi
 
+echo " ## Setting Hawkular URL to ${HAWKULAR_URL} ##"
+
 /opt/hawkular-live/bin/standalone.sh -b 0.0.0.0 -bmanagement 0.0.0.0 \
   -Dkeycloak.server.url=http://${HAWKULAR_URL}/auth \
   -Djboss.server.data.dir=/data \
