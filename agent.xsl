@@ -9,7 +9,7 @@
 <xsl:param name="username" select="'jdoe'"/>
 <xsl:param name="password" select="'password'"/>
 
-<xsl:template match="node()[name(.)='subsystem' and @apiJndiName='java:global/hawkular/agent/monitor/api']">
+<xsl:template match="node()[name(.)='subsystem' and namespace-uri(.)='urn:org.hawkular.agent:agent:1.0']">
   <xsl:copy>
      <xsl:apply-templates select="@*" />
      <xsl:attribute name="enabled">
