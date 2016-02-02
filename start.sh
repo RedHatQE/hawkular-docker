@@ -33,7 +33,7 @@ if [ !  -z "${CASSANDRA_NODES}" ]; then
 elif [ ! -z "${CASSANDRA_SERVICE}" ]; then
    echo " ## Using Kubernetes-style named service"
    export HAWKULAR_BACKEND=cassandra
-   eval "s=${CASSANDRA_SERVICE}_SERVICE_HOST"
+   eval "s=${CASSANDRA_SERVICE^^}_SERVICE_HOST"
    export CASSANDRA_NODES=${!s}
    echo ${CASSANDRA_NODES}
 fi
