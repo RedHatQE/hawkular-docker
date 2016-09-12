@@ -1,3 +1,5 @@
+## Note: This project is replaced by [Hawkular-Services-Docker](https://github.com/Hawkular-QE/hawkular-services-docker)
+
 ## Hawkular
 Hawkular is an open source system monitoring suite.  You can learn more about the project here: http://www.hawkular.org
 
